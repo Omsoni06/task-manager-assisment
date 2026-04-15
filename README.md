@@ -130,14 +130,3 @@ Thunder Client (VS Code)
 👨‍💻 Author
 
 Om Soni
-
-
----
-
-# 📁 **Also create this file (VERY IMPORTANT)**
-
-## `.env.example`
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_uri_here
