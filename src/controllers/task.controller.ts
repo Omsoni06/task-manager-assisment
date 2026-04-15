@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Task from "../models/task.model";
 import { validateTask } from "../utils/validate";
 
-// CREATE
+//  CREATE TASK CONTROLLER
 export const createTask = async (req: Request, res: Response) => {
   try {
     const errors = validateTask(req.body);
@@ -25,7 +25,7 @@ export const createTask = async (req: Request, res: Response) => {
   }
 };
 
-// GET ALL (filters + pagination)
+// GET ALL (filters + pagination) CONTROLLER
 export const getTasks = async (req: Request, res: Response) => {
   try {
     const {
@@ -37,7 +37,7 @@ export const getTasks = async (req: Request, res: Response) => {
       order = "desc",
       page = "1",
       limit = "10",
-    } = req.query;
+    } = req.query; // DESTRUCTURING QUERY
 
     const filter: any = {};
 
@@ -74,7 +74,7 @@ export const getTasks = async (req: Request, res: Response) => {
   }
 };
 
-// GET BY ID
+// GET TASK BY ID
 export const getTaskById = async (req: Request, res: Response) => {
   try {
     const task = await Task.findById(req.params.id).lean();
@@ -89,7 +89,7 @@ export const getTaskById = async (req: Request, res: Response) => {
   }
 };
 
-// UPDATE
+// UPDATE TASK BY ID
 export const updateTask = async (req: Request, res: Response) => {
   try {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
@@ -107,7 +107,7 @@ export const updateTask = async (req: Request, res: Response) => {
   }
 };
 
-// DELETE
+// DELETE TASK
 export const deleteTask = async (req: Request, res: Response) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
